@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         btnLogout = findViewById(R.id.btn_logout);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -38,14 +37,8 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
 
-                switch (item.getItemId()){
-                    case R.id.nav_home:
-                        selectedFragment = new HomeFragment();
-                        break;
-
-                    case R.id.nav_calculator:
+                if (item.getItemId() == R.id.nav_calculator){
                         selectedFragment = new CalculatorFragment();
-                        break;
                 }
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
